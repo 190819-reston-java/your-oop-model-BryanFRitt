@@ -3,6 +3,9 @@
  */
 package oop_model;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+
 /**
  * @author bryan
  *
@@ -50,8 +53,7 @@ public class ConcreteClass extends AbstractClass implements InterfaceClass,Compa
 		}
 		catch (Exception e) {
 			System.out.println("Try to do something else, because " + e);
-		}
-		
+		}	
 		System.out.println("Sorry you can't do this");
 	}
 
@@ -61,15 +63,25 @@ public class ConcreteClass extends AbstractClass implements InterfaceClass,Compa
 
 	public void setId(int id) {
 		try {
+			System.out.println("Sorry Set ID not possible");
 			new Exception("Can not do");
 			// System.out.println("Sorry you can't do this");
 		} catch (Exception e){
-			System.out.println("Try to do something else");
+			System.out.println("Try to do something else"); // TODO: Why didn't this print?
 		}
 	}
 
 	public int compareTo(ConcreteClass obj) {
 		return this.id - obj.id;
+	}
+	
+	static boolean Comparator(ConcreteClass A, ConcreteClass B){
+		return A.id < B.id;
+	}
+	
+	@Override
+	public String toString() {
+		return Integer.toString(this.id);
 	}
 
 	/**
@@ -79,7 +91,7 @@ public class ConcreteClass extends AbstractClass implements InterfaceClass,Compa
 		// TODO Auto-generated method stub
 		ConcreteClass myConcreteClassObject001 = new ConcreteClass();
 		ConcreteClass myConcreteClassObject002 = new ConcreteClass();
-		//ConcreteClass myConcreteClassObject003 = new ConcreteClass();
+		ConcreteClass myConcreteClassObject003 = new ConcreteClass();
 		
 		System.out.println(myConcreteClassObject001.iIsDouble);
 		System.out.println(myConcreteClassObject001.iIsFloat);
@@ -93,5 +105,23 @@ public class ConcreteClass extends AbstractClass implements InterfaceClass,Compa
 		System.out.println(iIsGoingToBeOverloaded(5.1,3));
 		
 		System.out.println(myConcreteClassObject001.compareTo(myConcreteClassObject002));
+		
+		// Show exception
+		System.out.println("Trying to create an exception");
+		ConcreteClass.setCount(999);
+		
+		ConcreteClass[] cc = { myConcreteClassObject001, myConcreteClassObject002, myConcreteClassObject003 };
+		
+		System.out.println("Trying to create another exception");
+		myConcreteClassObject001.setId(999);
+		
+		ArrayList<ConcreteClass> alcc = new ArrayList<ConcreteClass>();
+		alcc.add(myConcreteClassObject003);
+		alcc.add(myConcreteClassObject001);
+		alcc.add(myConcreteClassObject002);
+		
+		System.out.println(alcc);
+		alcc.sort(null);
+		System.out.println(alcc);
 	}
 }
