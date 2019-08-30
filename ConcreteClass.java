@@ -9,8 +9,8 @@ package oop_model;
  */
 public class ConcreteClass extends AbstractClass implements InterfaceClass,Comparable<ConcreteClass> {
 
-	static int count = 0;
-	int id;
+	private static int count = 0;
+	private int id;
 	
 	public ConcreteClass() {
 		// TODO Auto-generated constructor stub
@@ -40,9 +40,38 @@ public class ConcreteClass extends AbstractClass implements InterfaceClass,Compa
 		return i*b;
 	}
 
+	public static int getCount() {
+		return count;
+	}
+
+	public static void setCount(int count) {
+		try {
+			new Exception("count can not manually set count");
+		}
+		catch (Exception e) {
+			System.out.println("Try to do something else, because " + e);
+		}
+		
+		System.out.println("Sorry you can't do this");
+	}
+
+	public int getId() {
+		return this.id;
+	}
+
+	public void setId(int id) {
+		try {
+			new Exception("Can not do");
+			// System.out.println("Sorry you can't do this");
+		} catch (Exception e){
+			System.out.println("Try to do something else");
+		}
+	}
+
 	public int compareTo(ConcreteClass obj) {
 		return this.id - obj.id;
 	}
+
 	/**
 	 * @param args
 	 */
@@ -50,6 +79,8 @@ public class ConcreteClass extends AbstractClass implements InterfaceClass,Compa
 		// TODO Auto-generated method stub
 		ConcreteClass myConcreteClassObject001 = new ConcreteClass();
 		ConcreteClass myConcreteClassObject002 = new ConcreteClass();
+		//ConcreteClass myConcreteClassObject003 = new ConcreteClass();
+		
 		System.out.println(myConcreteClassObject001.iIsDouble);
 		System.out.println(myConcreteClassObject001.iIsFloat);
 		System.out.println(myConcreteClassObject001.iIsInt);
