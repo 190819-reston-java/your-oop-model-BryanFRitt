@@ -63,5 +63,4 @@ public class ConcreteClass extends AbstractClass implements InterfaceClass,Compa
 		
 		System.out.println(myConcreteClassObject001.compareTo(myConcreteClassObject002));
 	}
-
 }
